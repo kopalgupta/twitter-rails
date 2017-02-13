@@ -1,0 +1,14 @@
+<!-- <h1>Authentication#signup_get</h1>
+<p>Find me in app/views/authentication/signup_get.html.erb</p>
+ -->
+
+ <%= form_tag '/signup' do %>
+
+ Name: <%= text_field_tag :name %><br>
+ Email: <%= text_field_tag :email %><br>
+ Password: <%= password_field_tag :password %><br>
+ Handle: <%= text_field_tag :handle %><br>
+
+ <%= submit_tag "Sign Up" %>
+
+ <% end %>

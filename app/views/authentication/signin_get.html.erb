@@ -1,0 +1,10 @@
+<!-- <h1>Authentication#signin_get</h1>
+<p>Find me in app/views/authentication/signin_get.html.erb</p> -->
+
+<%= form_tag '/signin' do %>
+
+Email: <%= text_field_tag :email %><br>
+Password: <%= password_field_tag :password %><br>
+<%= submit_tag "Signin" %>
+
+<% end %>
