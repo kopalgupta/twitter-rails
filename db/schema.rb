@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213131558) do
+ActiveRecord::Schema.define(version: 20170213193219) do
+
+  create_table "follow_mappings", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "follow_mappings", ["followee_id"], name: "index_follow_mappings_on_followee_id"
+  add_index "follow_mappings", ["follower_id"], name: "index_follow_mappings_on_follower_id"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "tweet_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["tweet_id"], name: "index_likes_on_tweet_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "tweets", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tweets", ["user_id"], name: "index_tweets_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       null: false
