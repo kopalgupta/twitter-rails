@@ -10,7 +10,9 @@
 
 <% if user_signed_in? %>
 	<%= link_to 'Log Out', '/logout' %><br>
-	<%= link_to 'Follow People', '/users' %>
+	<%= link_to 'Find People', '/users' %><br>
+	<%= link_to 'My Followers', '/followers' %><br>
+	<%= link_to 'I Follow...', '/followees' %>
 
 	<h3>Hello, <%= current_user.name %>! @<%= current_user.handle %></h3>
 <% end %>
