@@ -46,13 +46,20 @@ class HomeController < ApplicationController
 	end
 
 	def comment
-		# tweet_id = params[:tweet_id]
-		tweet = Tweet.find(params[:tweet_id])
-		comment = tweet.comments.create(content: params[:content])
+	  tweet_id = params[:tweet_id]
+		# tweet = Tweet.find(params[:tweet_id])
+		comment = current_user.comments.create(tweet_id: tweet_id, content: params[:content])
 		return redirect_to '/'
 	end
 
 	def delete_comment
+		comment = Comment.find(params[:comment_id])
+		comment.destroy
+		redirect_to '/'
+	end
+
+	def retweet
+
 	end
 
 	def follow

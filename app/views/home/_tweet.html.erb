@@ -20,12 +20,17 @@
 
 
 <%= "#{count_comments} Comments" %>
+<ul>
 <% tweet_comments.each do |tc| %>
-	<% commentor = User.where(:id => tc.user_id) %>
-	<%= commentor.handle %>: <%= tc.content %>
-	<br>
+	<li>
+	<% commentor = User.where(:id => tc.user_id).first %>
+	@<%= commentor.handle %>: <%= tc.content %>
+	<% if commentor.id == current_user.id %>
+		<%= link_to 'Delete Comment', url_for(controller: :home, action: :delete_comment, comment_id: tc.id), method: :post %>
+	<% end %>
+	</li>
 <% end %>
-
+</ul>
 
 
 </p>
