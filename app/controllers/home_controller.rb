@@ -19,6 +19,19 @@ class HomeController < ApplicationController
 		redirect_to '/'
 	end
 
+	def edit_tweet_get
+		tweet_id = params[:tweet_id]
+		@tweet = Tweet.where(:id => tweet_id).first
+	end
+
+	def edit_tweet
+		tweet_id = params[:edit_id]
+		tweet = Tweet.where(:id => tweet_id).first
+		tweet.content = params[:new_content]
+		tweet.save
+		redirect_to '/'
+	end
+
 
 	def like
 		tweet_id = params[:tweet_id]

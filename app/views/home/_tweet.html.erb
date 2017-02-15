@@ -14,4 +14,8 @@
 	<%= link_to "Delete", url_for(controller: :home, action: :delete_tweet, tweet_id: tweet.id), method: :post %>
 <% end %>
 
+<% if current_user.id == tweet.user_id %>
+	<%= link_to "Edit", url_for(controller: :home, action: :edit_tweet_get, tweet_id: tweet.id), method: :get %>
+<% end %>
+
 </p>

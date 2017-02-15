@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
 # home controller routes
   post '/create_tweet' => 'home#create_tweet'
+  post '/delete_tweet' => 'home#delete_tweet'
+  get '/edit_tweet' => 'home#edit_tweet_get'
+  post '/edit_tweet' => 'home#edit_tweet'
   post '/like' => 'home#like'
   post '/follow' => 'home#follow'
 

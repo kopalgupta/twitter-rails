@@ -1,0 +1,7 @@
+<%= form_tag '/edit_tweet' do %>
+	<%= hidden_field_tag :edit_id, @tweet.id %>
+	<%= text_area_tag :new_content, @tweet.content %>
+	<%= submit_tag "Save Changes" %>
+<% end %>
+
+<%= link_to 'Return to my feed', '/' %>
