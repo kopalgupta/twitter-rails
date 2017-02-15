@@ -1,0 +1,15 @@
+<%= link_to 'Back to my feed', '/' %><br>
+
+<%= form_tag '/users', method: :get, id: "search-form" do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @users.present? %>
+	<%= render 'users', :users => @users %>
+<% else %>
+	<p>There are no users matching your search. </p>
+<% end %>
+
+<%= link_to 'Back to search', '/users' %>
+
