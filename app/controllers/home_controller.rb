@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 	def index
 		@tweets = current_user.feed
 		@likes = Like.all
+		@comments = Comment.all
 	end
 
 	def create_tweet
@@ -44,6 +45,15 @@ class HomeController < ApplicationController
 		redirect_to '/'
 	end
 
+	def comment
+		# tweet_id = params[:tweet_id]
+		tweet = Tweet.find(params[:tweet_id])
+		comment = tweet.comments.create(content: params[:content])
+		return redirect_to '/'
+	end
+
+	def delete_comment
+	end
 
 	def follow
 		followee_id = params[:followee_id]

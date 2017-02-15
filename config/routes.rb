@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post '/edit_tweet' => 'home#edit_tweet'
   post '/like' => 'home#like'
   post '/follow' => 'home#follow'
+  post '/comment' => 'home#comment'
+  post '/delete_comment' => 'home#delete_comment'
 
   get '/users' => 'home#users'
   get '/followers' => 'home#followers'
