@@ -1,0 +1,10 @@
+<p>
+
+<% tweet = Tweet.find(rt.tweet_id) %>
+<% rt_user = User.find(rt.user_id) %>
+<% original_user = User.find(tweet.user_id) %>
+
+@<%= rt_user.handle %> retweeted: <br>
+@<%= original_user.handle %>: <%= tweet.content %>
+
+</p>

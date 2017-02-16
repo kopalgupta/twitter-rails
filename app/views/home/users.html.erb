@@ -1,7 +1,7 @@
 <%= link_to 'Back to my feed', '/' %><br>
 
 <%= form_tag '/users', method: :get, id: "search-form" do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+<%= text_area_tag :search, params[:search], placeholder: "Search by name/email/handle" %>
 <%= submit_tag "Search" %>
 <% end %>
 

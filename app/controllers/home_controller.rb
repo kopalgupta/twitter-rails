@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 		@tweets = current_user.feed
 		@likes = Like.all
 		@comments = Comment.all
+		@retweets = current_user.feed_retweet
 	end
 
 	def create_tweet
@@ -48,7 +49,7 @@ class HomeController < ApplicationController
 	def comment
 	  tweet_id = params[:tweet_id]
 		# tweet = Tweet.find(params[:tweet_id])
-		comment = current_user.comments.create(tweet_id: tweet_id, content: params[:content])
+		current_user.comments.create(tweet_id: tweet_id, content: params[:content])
 		return redirect_to '/'
 	end
 
@@ -58,9 +59,12 @@ class HomeController < ApplicationController
 		redirect_to '/'
 	end
 
-	def retweet
 
+	def retweet
+		current_user.retweets.create(tweet_id: params[:tweet_id])
+		return redirect_to '/'
 	end
+
 
 	def follow
 		followee_id = params[:followee_id]

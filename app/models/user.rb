@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	has_many :tweets
 	has_many :likes
 	has_many :comments
+	has_many :retweets
 	has_many :follower_mappings, class_name: 'FollowMapping', foreign_key: 'followee_id'
 	has_many :followee_mappings, class_name: 'FollowMapping', foreign_key: 'follower_id'
 	has_many :followers, through: :follower_mappings
@@ -20,8 +21,14 @@ class User < ActiveRecord::Base
 	def feed 
 		# To see my tweets and tweets of followees only
 		users = followees.pluck(:id) + [self.id]
-		feed_tweets = Tweet.includes(:user, :likes).where("user_id in (?)", users)
+		feed_tweets = Tweet.includes(:user, :likes, :comments).where("user_id in (?)", users)
 		feed_tweets # return
+	end
+
+	def feed_retweet
+		users = followees.pluck(:id) + [self.id]
+		feed_retweets = Retweet.includes(:user).where("user_id in (?)", users)
+		feed_retweets
 	end
 
 	def self.search(search)

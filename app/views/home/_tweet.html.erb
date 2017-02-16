@@ -18,6 +18,8 @@
 	<%= link_to "Edit", url_for(controller: :home, action: :edit_tweet_get, tweet_id: tweet.id), method: :get %>
 <% end %>
 
+<%= link_to "Retweet", url_for(controller: :home, action: :retweet, tweet_id: tweet.id), method: :post %>
+
 
 <%= "#{count_comments} Comments" %>
 <ul>
