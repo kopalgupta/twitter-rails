@@ -26,11 +26,7 @@
 
 		<%= render 'tweet', :tweet => tweet, :count_likes => count_likes, :count_comments => count_comments, :tweet_comments => tweet_comments %>
 
-		<%= form_tag '/comment', method: :post do %>
-		<%= hidden_field_tag :tweet_id, tweet.id %>
-		<%= text_area_tag :content %>
-		<%= submit_tag "Comment" %>
-		<% end %>
+		
 
 	
 <% end %>

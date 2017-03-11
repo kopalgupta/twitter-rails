@@ -7,7 +7,7 @@
 
 	<div class="content inline">
     <div class="userDetails">
-      <div class="username inline"><%= tweet.user.email %></div>
+      <div class="username inline">@<%= tweet.user.handle %></div>
       <div class="time inline"><%= tweet.created_at.to_formatted_s(:short) %></div>
     </div>
     <div class="tweetContent"><%= tweet.content %></div>
@@ -31,9 +31,7 @@
 
 <%= link_to "Retweet", url_for(controller: :home, action: :retweet, tweet_id: tweet.id), method: :post %>
 
-</div>
-</div>
-</div>
+
 
 <%= "#{count_comments} Comments" %>
 <ul>
@@ -47,4 +45,14 @@
 	</li>
 <% end %>
 </ul>
+
+		<%= form_tag '/comment', method: :post do %>
+		<%= hidden_field_tag :tweet_id, tweet.id %>
+		<%= text_area_tag :content %>
+		<%= submit_tag "Comment" %>
+		<% end %>
+
+</div>
+</div>
+</div>
 

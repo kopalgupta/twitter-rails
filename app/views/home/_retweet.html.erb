@@ -1,10 +1,20 @@
-<p>
+<div class="tweet">
+  <div class="userImage inline">
+    <div class="dummy">
+      <img class="tweetImage" src="https://pbs.twimg.com/profile_images/616147175987265536/EQm39fW7_bigger.png">
+    </div>
+  </div>
 
 <% tweet = Tweet.find(rt.tweet_id) %>
 <% rt_user = User.find(rt.user_id) %>
 <% original_user = User.find(tweet.user_id) %>
 
-@<%= rt_user.handle %> retweeted: <br>
-@<%= original_user.handle %>: <%= tweet.content %>
+<div class="content inline">
+    <div class="userDetails">
+      <div class="username inline">@<%= rt_user.handle %> retweeted: </div>
+      <div class="time inline"><%= tweet.created_at.to_formatted_s(:short) %></div>
+		</div>
+    <div class="tweetContent">@<%= original_user.handle %>: <%= tweet.content %></div>
 
-</p>
+</div>
+</div>
