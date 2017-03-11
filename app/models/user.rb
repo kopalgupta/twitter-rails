@@ -21,13 +21,13 @@ class User < ActiveRecord::Base
 	def feed 
 		# To see my tweets and tweets of followees only
 		users = followees.pluck(:id) + [self.id]
-		feed_tweets = Tweet.includes(:user, :likes, :comments).where("user_id in (?)", users)
+		feed_tweets = Tweet.includes(:user, :likes, :comments).where("user_id in (?)", users).order(created_at: :desc)
 		feed_tweets # return
 	end
 
 	def feed_retweet
 		users = followees.pluck(:id) + [self.id]
-		feed_retweets = Retweet.includes(:user).where("user_id in (?)", users)
+		feed_retweets = Retweet.includes(:user).where("user_id in (?)", users).order(created_at: :desc)
 		feed_retweets
 	end
 
