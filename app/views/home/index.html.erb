@@ -4,9 +4,9 @@
 	<%= submit_tag "Tweet Now!" %>
 <% end %>
 
-<ul>
+<div class="tweets">
 <% @tweets.each do |tweet| %>
-	<li>
+	
 		<% count_likes = 0 %>
 		<% @likes.each do |like| %>
 			<% if like.tweet_id == tweet.id %>
@@ -32,16 +32,16 @@
 		<%= submit_tag "Comment" %>
 		<% end %>
 
-	</li>
+	
 <% end %>
-</ul>
+</div>
 
-<ul>
+<div class="tweets">
 <% @retweets.each do |rt| %>
 	
-	<li>
+	
 		<%= render 'retweet', :rt => rt %>
-	</li>
+	
 	
 <% end %>
-</ul>
+</div>
