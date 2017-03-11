@@ -1,8 +1,19 @@
-<p>
+<div class="tweet">
+  <div class="userImage inline">
+    <div class="dummy">
+      <img class="tweetImage" src="https://pbs.twimg.com/profile_images/616147175987265536/EQm39fW7_bigger.png">
+    </div>
+  </div>
 
-@<%= tweet.user.handle %>: <%= tweet.content %><br> <%= tweet.created_at.to_formatted_s(:short) %>
+	<div class="content inline">
+    <div class="userDetails">
+      <div class="username inline"><%= tweet.user.email %></div>
+      <div class="time inline"><%= tweet.created_at.to_formatted_s(:short) %></div>
+    </div>
+    <div class="tweetContent"><%= tweet.content %></div>
+    <div class="reactions">
 
-<br>
+
 <%= "#{count_likes} likes " %>
 <% if tweet.likes.where(user_id: current_user.id).length > 0 %>
 	<%= link_to "Unlike", url_for(controller: :home, action: :like, tweet_id: tweet.id), method: :post %>
@@ -20,6 +31,9 @@
 
 <%= link_to "Retweet", url_for(controller: :home, action: :retweet, tweet_id: tweet.id), method: :post %>
 
+</div>
+</div>
+</div>
 
 <%= "#{count_comments} Comments" %>
 <ul>
@@ -34,5 +48,3 @@
 <% end %>
 </ul>
 
-
-</p>
